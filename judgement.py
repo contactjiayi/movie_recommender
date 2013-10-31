@@ -55,12 +55,6 @@ def user_ratings(user_id):
 
 @app.route("/view_movie/<movie_id>")
 def movie_ratings(movie_id):
-    """
-    1. Get movie name by querying the Movie class with movie_id
-    2. Check if user has rated this movie before
-    3. If yes, print the user's rating of that movie. If not, print 'you have not rated this movie'
-    4. Create form for user to add/update his/her rating of the movie
-    """
     user_id = session['user_id']
     user = model_session.query(model.User).filter_by(id=user_id).one()
     movie = model_session.query(model.Movie).filter_by(id=movie_id).one()
@@ -76,7 +70,7 @@ def movie_ratings(movie_id):
     prediction = None
     if len(user_rating) >= 1:
         rating = user_rating[0]
-        effective_rating = rating
+        effective_rating = rating.rating
     else:
         prediction = user.predict_rating(movie)
         effective_rating = prediction
@@ -94,7 +88,12 @@ def movie_ratings(movie_id):
     messages = [ "I suppose you don't have such bad taste after all.",
              "I regret every decision that I've ever made that has brought me to listen to your opinion.",
              "Words fail me, as your taste in movies has clearly failed you.",
-             "That movie is great. For a clown to watch. Idiot."]
+             "That movie is great. For a clown to watch. Idiot.", 
+             "This movie is horrible.", 
+             "This movie is good. Just for you"]
+
+    print "eye rating" + str(eye_rating)
+    print "effective rating" + str(effective_rating)
 
     beratement = messages[int(difference)]
 
