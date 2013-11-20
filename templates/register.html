@@ -1,0 +1,11 @@
+{% extends 'master.html' %}
+
+    {% block body %}
+    <form class="signin" action="{{url_for("register") }}" method="POST">
+        <h2 class="signin-heading">Register a new account</h2>
+        <input type="text" class="form-control" placeholder="Email" name="email">
+        <input type="password" class="form-control" placeholder="Password" name="password">
+        <input type="password" class="form-control" placeholder="Password" name="password_verify">
+        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Submit">
+    </form>
+    {% endblock %}

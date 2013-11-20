@@ -1,0 +1,22 @@
+{% extends 'master.html' %}
+{% block body %}
+
+    <h2>Your rating</h2>
+    <p>Average rating for this movie is: {{avg_rating}}</p>
+    {% if rating == None %}
+        <p>You haven't rated {{movie.name}} yet!</p>
+        <p>Your predicted rating is: {{prediction}}</p>
+        <p>The Judgemental Eye is saying: {{beratement}}</p>
+        <h2>Add your rating</h2>
+    {% else %}
+        <p>You rated {{movie.name}} {{rating.rating}}.</p>
+                <p>The Judgemental Eye is saying: {{beratement}}</p>
+        <h2>Change your rating</h2>
+    {% endif %}
+
+    <form action="/view_movie/{{movie_id}}" method="POST"/>
+        <input type="number" max="5" min="1" name="rating">
+        <button name="submit">Submit</button>
+    </form>
+
+{% endblock %}

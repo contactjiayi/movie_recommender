@@ -59,7 +59,21 @@ class Movie(Base):
     released_at = Column(DateTime(), nullable=True)
     imdb_url = Column(String(64), nullable=True)
 
-    #rating = relationship("Rating", backref=backref("movies", order_by=id))
+    def m_similarity(self, other):
+        m_ratings = {}
+        paired_ratings = []
+        for r in self.ratings:
+            m_ratings[r.movie_id] = r
+
+        for r in other.ratings:
+            m_r = m_ratings.get(r.movie_id)
+            if m_r:
+                paired_ratings.append( (m_r.rating, r.rating) )
+
+        if paired_ratings:
+            return correlation.pearson(paired_ratings)
+        else:
+            return 0.0
 
 class Rating(Base):
     __tablename__ = "ratings"

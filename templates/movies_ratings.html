@@ -1,0 +1,10 @@
+{% extends 'master.html' %}
+{% block body %}
+
+    <ul>
+    {% for rating in user.ratings %}
+            <li><a href="/view_movie/{{rating.movie_id}}">{{rating.movie.name}}</a>: {{rating.rating}}</li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

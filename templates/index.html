@@ -1,0 +1,16 @@
+{% extends 'master.html' %}
+{% block body %}
+    <form class="signin" action="{{url_for("process_login") }}" method="POST">
+        <h2 class="signin-heading">Please sign in</h2>
+        <ul>
+            {% for message in get_flashed_messages() %}
+            <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+        <input type="text" class="form-control" placeholder="Email" name="email">
+        <input type="password" class="form-control" placeholder="Password" name="password">
+        Not a user? <a href="{{ url_for("register") }}">Register</a> a new account
+        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Submit">
+    </form>
+{% endblock %}
+  

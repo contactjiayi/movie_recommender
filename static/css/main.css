@@ -1,0 +1,30 @@
+h2 {
+    color: red;
+}
+body {
+    background-color: #eee;
+}
+form.signin {
+    width: 330px;
+    margin:50px auto;
+}
+form.post_to_wall {
+    width: 400px;
+    margin: auto auto auto 10px;
+}
+form.post_to_wall input.btn {
+    margin-top: 15px;
+}
+
+form.signin input.form-control {
+    margin-bottom: 5px;
+}
+form.signin input.btn {
+    margin-top: 15px;
+}
+div.posts {
+    background-color: #ffffff;
+    width: 400px;
+    margin: auto auto auto 10px;
+    padding: 10px 10px 10px 10px;
+}

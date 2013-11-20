@@ -92,9 +92,6 @@ def movie_ratings(movie_id):
              "This movie is horrible.", 
              "This movie is good. Just for you"]
 
-    print "eye rating" + str(eye_rating)
-    print "effective rating" + str(effective_rating)
-
     beratement = messages[int(difference)]
 
     return render_template("view_movie.html", user=user, movie=movie, movie_id=movie_id, rating=rating, prediction=prediction, avg_rating=avg_rating, beratement=beratement)

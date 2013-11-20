@@ -1,0 +1,10 @@
+{% extends 'master.html' %}
+{% block body %}
+
+<ul>
+    {% for user in users %}
+            <li>User <a href="/user/{{user.id}}">{{user.id}}</a>, age {{user.age}} has {{user.ratings|length}} ratings</li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
